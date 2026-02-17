@@ -192,7 +192,7 @@ TEST(APSIntTest, FromStringBitWidth) {
 
 #if defined(GTEST_HAS_DEATH_TEST) && !defined(NDEBUG)
 
-TEST(APSIntTest, StringDeath) {
+TEST(APSIntDeathTest, StringDeath) {
   EXPECT_DEATH((void)APSInt(""), "Invalid string length");
   EXPECT_DEATH((void)APSInt("1a"), "Invalid character in digit string");
 }

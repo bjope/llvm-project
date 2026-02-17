@@ -257,7 +257,7 @@ TEST(StringSwitchTest, StringSwitchMultipleMatches) {
   EXPECT_EQ(1, Translate("b"));
 }
 
-TEST(StringSwitchTest, DefaultUnreachable) {
+TEST(StringSwitchDeathTest, DefaultUnreachable) {
   auto Translate = [](StringRef S) {
     return llvm::StringSwitch<int>(S)
         .Case("A", 0)

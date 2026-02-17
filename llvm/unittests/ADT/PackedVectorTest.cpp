@@ -81,7 +81,7 @@ TEST(PackedVectorTest, SignedValueOverwrite) {
 
 #ifdef EXPECT_DEBUG_DEATH
 
-TEST(PackedVectorTest, UnsignedValues) {
+TEST(PackedVectorDeathTest, UnsignedValues) {
   PackedVector<unsigned, 2> Vec(1);
   Vec[0] = 0;
   Vec[0] = 1;
@@ -97,7 +97,7 @@ TEST(PackedVectorTest, UnsignedValues) {
   EXPECT_DEBUG_DEATH(Vec[0] = 8, "value is too big");
 }
 
-TEST(PackedVectorTest, SignedValues) {
+TEST(PackedVectorDeathTest, SignedValues) {
   PackedVector<signed, 2> Vec(1);
   Vec[0] = -2;
   Vec[0] = -1;

@@ -224,7 +224,7 @@ TEST(BitfieldsTest, FullInt64) {
 
 #ifdef EXPECT_DEBUG_DEATH
 
-TEST(BitfieldsTest, ValueTooBigBool) {
+TEST(BitfieldsDeathTest, ValueTooBigBool) {
   uint64_t Storage = 0;
   using A = Bitfield::Element<unsigned, 0, 1>;
   Bitfield::set<A>(Storage, true);
@@ -232,7 +232,7 @@ TEST(BitfieldsTest, ValueTooBigBool) {
   EXPECT_DEBUG_DEATH(Bitfield::set<A>(Storage, 2), "value is too big");
 }
 
-TEST(BitfieldsTest, ValueTooBigInt) {
+TEST(BitfieldsDeathTest, ValueTooBigInt) {
   uint64_t Storage = 0;
   using A = Bitfield::Element<unsigned, 0, 2>;
   Bitfield::set<A>(Storage, 3);
@@ -240,7 +240,7 @@ TEST(BitfieldsTest, ValueTooBigInt) {
   EXPECT_DEBUG_DEATH(Bitfield::set<A>(Storage, -1), "value is too big");
 }
 
-TEST(BitfieldsTest, ValueTooBigBounded) {
+TEST(BitfieldsDeathTest, ValueTooBigBounded) {
   uint8_t Storage = 0;
   using A = Bitfield::Element<int, 1, 2>;
   Bitfield::set<A>(Storage, 1);

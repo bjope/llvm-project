@@ -1568,7 +1568,7 @@ TEST(APIntTest, Log2) {
 
 #ifdef GTEST_HAS_DEATH_TEST
 #ifndef NDEBUG
-TEST(APIntTest, StringDeath) {
+TEST(APIntDeathTest, StringDeath) {
   EXPECT_DEATH((void)APInt(32, "", 0), "Invalid string length");
   EXPECT_DEATH((void)APInt(32, "0", 0), "Radix should be 2, 8, 10, 16, or 36!");
   EXPECT_DEATH((void)APInt(32, "", 10), "Invalid string length");

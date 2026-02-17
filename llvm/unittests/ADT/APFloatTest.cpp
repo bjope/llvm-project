@@ -1815,7 +1815,7 @@ TEST(APFloatTest, makeNaN) {
 
 #ifdef GTEST_HAS_DEATH_TEST
 #ifndef NDEBUG
-TEST(APFloatTest, SemanticsDeath) {
+TEST(APFloatDeathTest, SemanticsDeath) {
   EXPECT_DEATH(APFloat(APFloat::IEEEquad(), 0).convertToDouble(),
                "Float semantics is not representable by IEEEdouble");
   EXPECT_DEATH(APFloat(APFloat::IEEEdouble(), 0).convertToFloat(),
@@ -9420,7 +9420,7 @@ TEST(APFloatTest, getExactLog2) {
   }
 }
 
-TEST(APFloatTest, Float8E8M0FNUGetZero) {
+TEST(APFloatDeathTest, Float8E8M0FNUGetZero) {
 #ifdef GTEST_HAS_DEATH_TEST
 #ifndef NDEBUG
   EXPECT_DEATH(APFloat::getZero(APFloat::Float8E8M0FNU(), false),
@@ -9431,7 +9431,7 @@ TEST(APFloatTest, Float8E8M0FNUGetZero) {
 #endif
 }
 
-TEST(APFloatTest, Float8E8M0FNUGetSignedValues) {
+TEST(APFloatDeathTest, Float8E8M0FNUGetSignedValues) {
 #ifdef GTEST_HAS_DEATH_TEST
 #ifndef NDEBUG
   EXPECT_DEATH(APFloat(APFloat::Float8E8M0FNU(), "-64"),
@@ -9664,7 +9664,7 @@ TEST(APFloatTest, ConvertDoubleToE8M0FNU) {
   EXPECT_EQ(status, APFloat::opUnderflow | APFloat::opInexact);
 }
 
-TEST(APFloatTest, Float6E3M2FNFromString) {
+TEST(APFloatDeathTest, Float6E3M2FNFromString) {
   // Exactly representable
   EXPECT_EQ(28, APFloat(APFloat::Float6E3M2FN(), "28").convertToDouble());
   // Round down to maximum value
@@ -9683,7 +9683,7 @@ TEST(APFloatTest, Float6E3M2FNFromString) {
   EXPECT_TRUE(APFloat(APFloat::Float6E3M2FN(), "-0").isNegZero());
 }
 
-TEST(APFloatTest, Float6E2M3FNFromString) {
+TEST(APFloatDeathTest, Float6E2M3FNFromString) {
   // Exactly representable
   EXPECT_EQ(7.5, APFloat(APFloat::Float6E2M3FN(), "7.5").convertToDouble());
   // Round down to maximum value
@@ -9702,7 +9702,7 @@ TEST(APFloatTest, Float6E2M3FNFromString) {
   EXPECT_TRUE(APFloat(APFloat::Float6E2M3FN(), "-0").isNegZero());
 }
 
-TEST(APFloatTest, Float4E2M1FNFromString) {
+TEST(APFloatDeathTest, Float4E2M1FNFromString) {
   // Exactly representable
   EXPECT_EQ(6, APFloat(APFloat::Float4E2M1FN(), "6").convertToDouble());
   // Round down to maximum value
@@ -9944,21 +9944,21 @@ TEST(APFloatTest, Float4E2M1FNNext) {
 
 #ifdef GTEST_HAS_DEATH_TEST
 #ifndef NDEBUG
-TEST(APFloatTest, Float6E3M2FNGetInfNaN) {
+TEST(APFloatDeathTest, Float6E3M2FNGetInfNaN) {
   EXPECT_DEATH(APFloat::getInf(APFloat::Float6E3M2FN()),
                "This floating point format does not support Inf");
   EXPECT_DEATH(APFloat::getNaN(APFloat::Float6E3M2FN()),
                "This floating point format does not support NaN");
 }
 
-TEST(APFloatTest, Float6E2M3FNGetInfNaN) {
+TEST(APFloatDeathTest, Float6E2M3FNGetInfNaN) {
   EXPECT_DEATH(APFloat::getInf(APFloat::Float6E2M3FN()),
                "This floating point format does not support Inf");
   EXPECT_DEATH(APFloat::getNaN(APFloat::Float6E2M3FN()),
                "This floating point format does not support NaN");
 }
 
-TEST(APFloatTest, Float4E2M1FNGetInfNaN) {
+TEST(APFloatDeathTest, Float4E2M1FNGetInfNaN) {
   EXPECT_DEATH(APFloat::getInf(APFloat::Float4E2M1FN()),
                "This floating point format does not support Inf");
   EXPECT_DEATH(APFloat::getNaN(APFloat::Float4E2M1FN()),

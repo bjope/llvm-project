@@ -274,7 +274,7 @@ TEST(STLExtrasTest, EnumerateTemporaries) {
 }
 
 #if defined(GTEST_HAS_DEATH_TEST) && !defined(NDEBUG)
-TEST(STLExtrasTest, EnumerateDifferentLengths) {
+TEST(STLExtrasDeathTest, EnumerateDifferentLengths) {
   std::vector<int> Ints = {0, 1};
   bool Bools[] = {true, false, true};
   std::string Chars = "abc";
@@ -874,7 +874,7 @@ TEST(STLExtrasTest, MapRangeTest) {
   EXPECT_THAT(map_range(Structs, &MapRangeStruct::getX), ElementsAre(1, 2, 3));
 }
 
-TEST(STLExtrasTest, EarlyIncrementTest) {
+TEST(STLExtrasDeathTest, EarlyIncrementTest) {
   std::list<int> L = {1, 2, 3, 4};
 
   auto EIR = make_early_inc_range(L);
@@ -953,7 +953,7 @@ struct CustomPointerIterator
 // Make sure make_early_inc_range works with iterators that do not return a
 // reference on dereferencing. The test is similar to EarlyIncrementTest, but
 // uses CustomPointerIterator.
-TEST(STLExtrasTest, EarlyIncrementTestCustomPointerIterator) {
+TEST(STLExtrasDeathTest, EarlyIncrementTestCustomPointerIterator) {
   std::list<int> L = {1, 2, 3, 4};
 
   auto CustomRange = make_range(CustomPointerIterator(L.begin()),
@@ -1133,7 +1133,7 @@ TEST(STLExtrasTest, hasSingleElement) {
   EXPECT_FALSE(hasSingleElement(S));
 }
 
-TEST(STLExtrasTest, getSingleElement) {
+TEST(STLExtrasDeathTest, getSingleElement) {
   // Test const and non-const containers.
   const std::vector<int> V1 = {7};
   EXPECT_EQ(getSingleElement(V1), 7);

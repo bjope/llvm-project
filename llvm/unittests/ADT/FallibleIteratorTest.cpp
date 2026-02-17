@@ -163,7 +163,7 @@ TEST(FallibleIteratorTest, NoRedundantErrorCheckOnEarlyExit) {
 }
 
 #if LLVM_ENABLE_ABI_BREAKING_CHECKS
-TEST(FallibleIteratorTest, RegularLoopExitRequiresErrorCheck) {
+TEST(FallibleIteratorDeathTest, RegularLoopExitRequiresErrorCheck) {
 
   // Check that Err must be checked after a normal (i.e. not early) loop exit
   // by failing to check and expecting program death (due to the unchecked

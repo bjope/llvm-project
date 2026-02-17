@@ -153,7 +153,7 @@ TEST(AnyTest, CopiesAndMoves) {
   EXPECT_EQ(2, T3.Moves);
 }
 
-TEST(AnyTest, BadAnyCast) {
+TEST(AnyDeathTest, BadAnyCast) {
   llvm::Any A;
   llvm::Any B{7};
   llvm::Any C{"hello"};

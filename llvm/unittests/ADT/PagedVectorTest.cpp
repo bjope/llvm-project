@@ -15,7 +15,7 @@
 #include <iterator>
 
 namespace llvm {
-TEST(PagedVectorTest, EmptyTest) {
+TEST(PagedVectorDeathTest, EmptyTest) {
   PagedVector<int, 10> V;
   EXPECT_EQ(V.empty(), true);
   EXPECT_EQ(V.size(), 0ULL);
@@ -59,7 +59,7 @@ TEST(PagedVectorTest, FullPageFillingTest) {
     EXPECT_EQ(V[I], I);
 }
 
-TEST(PagedVectorTest, HalfPageFillingTest) {
+TEST(PagedVectorDeathTest, HalfPageFillingTest) {
   PagedVector<int, 10> V;
   V.resize(5);
   EXPECT_EQ(V.empty(), false);
@@ -228,7 +228,7 @@ TEST(PagedVectorTest, FillNonTrivialConstructorDestructor) {
   EXPECT_EQ(TestHelper2::destroyed, 30);
 }
 
-TEST(PagedVectorTest, ShrinkTest) {
+TEST(PagedVectorDeathTest, ShrinkTest) {
   PagedVector<int, 10> V;
   V.resize(20);
   EXPECT_EQ(V.empty(), false);

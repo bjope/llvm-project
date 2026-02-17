@@ -116,7 +116,7 @@ TEST(TypeSwitchTest, CasesOptional) {
   EXPECT_EQ(-1, translate(DerivedD()));
 }
 
-TEST(TypeSwitchTest, DefaultUnreachableWithValue) {
+TEST(TypeSwitchDeathTest, DefaultUnreachableWithValue) {
   auto translate = [](auto value) {
     return TypeSwitch<Base *, int>(&value)
         .Case([](DerivedA *) { return 0; })
@@ -129,7 +129,7 @@ TEST(TypeSwitchTest, DefaultUnreachableWithValue) {
 #endif
 }
 
-TEST(TypeSwitchTest, DefaultUnreachableWithVoid) {
+TEST(TypeSwitchDeathTest, DefaultUnreachableWithVoid) {
   auto translate = [](auto value) {
     int result = -1;
     TypeSwitch<Base *>(&value)

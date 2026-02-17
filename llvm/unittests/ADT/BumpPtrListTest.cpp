@@ -222,7 +222,7 @@ TEST(BumpPtrListTest, copyCallsDestructors) {
   EXPECT_EQ(1u, CountsDestructors::NumCalls);
 }
 
-TEST(BumpPtrListTest, resetAlloc) {
+TEST(BumpPtrListDeathTest, resetAlloc) {
   // Resetting an empty list should work.
   BumpPtrList<int> L;
 

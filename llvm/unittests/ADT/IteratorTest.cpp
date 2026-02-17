@@ -567,7 +567,7 @@ TEST(ZipIteratorTest, ZipEqualTemporaries) {
 #if !defined(NDEBUG) && GTEST_HAS_DEATH_TEST
 // Check that an assertion is triggered when ranges passed to `zip_equal` differ
 // in length.
-TEST(ZipIteratorTest, ZipEqualNotEqual) {
+TEST(ZipIteratorDeathTest, ZipEqualNotEqual) {
   const SmallVector<unsigned, 6> pi = {3, 1, 4, 1, 5, 8};
   const SmallVector<bool, 2> vals = {1, 1};
 
@@ -593,7 +593,7 @@ TEST(ZipIteratorTest, ZipFirstBasic) {
 
 #if !defined(NDEBUG) && GTEST_HAS_DEATH_TEST
 // Make sure that we can detect when the first range is not the shortest.
-TEST(ZipIteratorTest, ZipFirstNotShortest) {
+TEST(ZipIteratorDeathTest, ZipFirstNotShortest) {
   const std::array<unsigned, 6> longer = {};
   const std::array<unsigned, 4> shorter = {};
 
